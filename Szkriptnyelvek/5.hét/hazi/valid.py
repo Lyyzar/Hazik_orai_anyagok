@@ -1,7 +1,7 @@
 #! usr/bin/env python3
 
 def valid(text, chars="ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"):
-    """A 2 parameter function it gives back a string. It's looking for characters from the second parameter in the first parameter, if it found one conc"""
+    """A 2 parameter function, it gives back a string. It's looking for characters from the second parameter in the first parameter, if it finds one concatenate it"""
     res=""
     for s in text:
         for p in chars:
