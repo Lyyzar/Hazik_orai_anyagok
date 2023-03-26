@@ -1,6 +1,7 @@
 #! usr/bin/env python3
 
-def m(s):
+def inv_cap(s):
+    """This function adds together numbers that are followed by the same number"""
     k=str(s)
     res=0
     for inx,num in enumerate(k):
@@ -14,7 +15,7 @@ def m(s):
     return res
 
 def main():
-    print(m(1111))
+    print(inv_cap(1111))
 
 
 if __name__=='__main__':
