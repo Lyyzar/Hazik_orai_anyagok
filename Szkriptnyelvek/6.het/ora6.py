@@ -36,7 +36,7 @@ def main():
     d.keys() #iterátor egyenként adja vissza az elemeket pl for ciklusban
     list(d.keys()) #liszt() iterátorokat gyűjt össze listává
     list(d.values())
-    print()
+    print("reeeeeeeeeeeeeeeeee")
 
     for e in d:
         print(e + "->" + d[e])
@@ -102,31 +102,7 @@ def main():
     print("world",file=f)
     f.write("aa\n") #nem rak bele sortörést csak ha te oda teszed mint most
     f.close() #eddig pufferbe írunk 8kb pl a buffer ha megtelik kiírja szóval ha ezt lehagyjuk akkor lehet a vége hiányozni fog
-
     sys.stdout.write("hsd")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 if __name__=='__main__':

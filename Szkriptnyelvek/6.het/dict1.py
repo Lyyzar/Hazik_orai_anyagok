@@ -75,13 +75,16 @@ def main():
             d[e]=1
         else:
             d[e]+=1
-    print(d)
 
-#vagy
+    print()
 
-    for w in words:
-        d[w]=d.get(w,0)+1
-    print(d)
+    keys=list(d.keys())
+    keys.sort()
+
+    resdict={i: d[i] for i in keys}
+    for p in resdict:
+        print(p + " " + str(resdict[p]))
+
 #############################################################################
 
 if __name__ == '__main__':
