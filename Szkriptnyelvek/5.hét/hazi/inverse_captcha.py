@@ -15,7 +15,7 @@ def inv_cap(s):
     return res
 
 def main():
-    print(inv_cap(1111))
+    print(inv_cap(11223344))
 
 
 if __name__=='__main__':
