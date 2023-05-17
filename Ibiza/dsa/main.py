@@ -3,36 +3,34 @@ from Crypto.Signature import DSS
 from Crypto.Hash import SHA256
 
 
-# Create a new DSA key
+secretkey = DSA.generate(2048)
+publickey = secretkey.publickey()
 
-sk = DSA.generate(2048)
-pk = sk.publickey()
+fp_secretkey = open("private.pem","w")
+fp_publickey = open("public.pem","w")
 
-fp_sk = open("private.pem","w")
-fp_pk = open("public.pem","w")
+fp_secretkey.write(secretkey.export_key().decode())
+fp_publickey.write(publickey.export_key().decode())
 
-fp_sk.write(sk.export_key().decode())
-fp_pk.write(pk.export_key().decode())
+uzenet = b"This is the message!"
+hash_obj = SHA256.new(uzenet)
 
-message = b"Hello"
-hash_obj = SHA256.new(message)
+alairo = DSS.new(secretkey, 'fips-186-3')
+alairas = alairo.sign(hash_obj)
+validator = DSS.new(publickey, 'fips-186-3')
 
-signer = DSS.new(sk, 'fips-186-3')
-signature = signer.sign(hash_obj)
-validator = DSS.new(pk, 'fips-186-3')
+uzenet2 = b"This is another message!"
+hash_obj2 = SHA256.new(uzenet2)
 
-message2 = b"Hellllo"
-hash_obj2 = SHA256.new(message2)
-# Verify the authenticity of the message
 
 try:
-    validator.verify(hash_obj, signature)
+    validator.verify(hash_obj, alairas)
     print("Ervenyes alairas")
 except ValueError:
     print("Ervenytelen alairas")
 
 try:
-    validator.verify(hash_obj2, signature)
+    validator.verify(hash_obj2, alairas)
     print("Ervenyes alairas")
 except ValueError:
     print("Ervenytelen alairas")
